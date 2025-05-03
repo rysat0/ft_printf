@@ -16,10 +16,10 @@ all : $(NAME)
 
 $(NAME) : $(OBJS)
 	$(MAKE) -C ./libft
-	cp libft/libft.a $(NAME)
-	ar rcs $(NAME) $(OBJS)
+	cp libft/libft.a $@
+	ar rcs $@ $?
 
-%o : %.c
+%.o : %.c
 	$(CC) $(CFLAGS) -c $< -o $@
 
 clean :
@@ -30,6 +30,6 @@ fclean : clean
 	$(MAKE) -C ./libft fclean
 	$(RM) $(NAME)
 
-re : clean fclean all
+re : fclean all
 
 .PHONY: clean fclean all
