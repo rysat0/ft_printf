@@ -6,34 +6,38 @@
 /*   By: rysato <rysato@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/02 14:41:48 by rysato            #+#    #+#             */
-/*   Updated: 2025/05/02 21:01:35 by rysato           ###   ########.fr       */
+/*   Updated: 2025/05/03 17:43:51 by rysato           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int	judge_pattern(char symbol, va_list ap)
+static int	judge_pattern(char symbol, va_list ap);
+static int	ft_vprintf(const char *format, va_list ap);
+int			ft_printf(const char *format, ...);
+
+static int	judge_pattern(char symbol, va_list ap)
 {
 	if (symbol == 'c')
 		return (put_out_c(va_arg(ap, int)));
-	if (symbol == 's')
+	else if (symbol == 's')
 		return (put_out_s(va_arg(ap, char *)));
-	if (symbol == 'p')
+	else if (symbol == 'p')
 		return (put_out_p(va_arg(ap, void *)));
-	if (symbol == 'd' || symbol == 'i')
+	else if (symbol == 'd' || symbol == 'i')
 		return (put_out_int(va_arg(ap, int)));
-	if (symbol == 'u')
+	else if (symbol == 'u')
 		return (put_out_u(va_arg(ap, unsigned int)));
-	if (symbol == 'x')
+	else if (symbol == 'x')
 		return (put_out_smallx(va_arg(ap, unsigned int)));
-	if (symbol == 'X')
+	else if (symbol == 'X')
 		return (put_out_largex(va_arg(ap, unsigned int)));
-	if (symbol == '%')
+	else if (symbol == '%')
 		return (put_out_per());
-	return (0);
+	return (-1);
 }
 
-int	ft_vprintf(const char *format, va_list ap)
+static int	ft_vprintf(const char *format, va_list ap)
 {
 	int	count;
 	int	tmp;
@@ -45,7 +49,7 @@ int	ft_vprintf(const char *format, va_list ap)
 		if (*format != '%')
 		{
 			if (write(1, format, 1) == -1)
-				return (count);
+				return (-1);
 			format++;
 			count++;
 			continue ;
@@ -53,10 +57,11 @@ int	ft_vprintf(const char *format, va_list ap)
 		format++;
 		tmp = judge_pattern(*format, ap);
 		if (tmp == -1)
-			return (count);
+			return (-1);
 		count = count + tmp;
-		ap++;
+		format++;
 	}
+	return (count);
 }
 
 int	ft_printf(const char *format, ...)

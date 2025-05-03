@@ -6,7 +6,7 @@
 /*   By: rysato <rysato@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/02 20:23:12 by rysato            #+#    #+#             */
-/*   Updated: 2025/05/02 20:53:16 by rysato           ###   ########.fr       */
+/*   Updated: 2025/05/03 16:52:17 by rysato           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,9 +15,10 @@
 
 int main(void)
 {
-	unsigned int i;
-	char c;
+	int i;
+	char *c = NULL;
 	i = 15;
-	printf("%x\n", i);
+	i = printf("%s", c);
+	printf("%d\n", i);
 	return(0);
 }
