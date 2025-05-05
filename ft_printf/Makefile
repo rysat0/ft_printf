@@ -4,6 +4,7 @@ MAKE = make
 
 CC = cc
 CFLAGS = -Wall -Wextra -Werror
+CPPFLAS = -I includes -I libft
 
 RM = rm -f
 
@@ -20,7 +21,7 @@ $(NAME) : $(OBJS)
 	ar rcs $@ $?
 
 %.o : %.c
-	$(CC) $(CFLAGS) -c $< -o $@
+	$(CC) $(CFLAGS) $(CPPFLAS) -c $< -o $@
 
 clean :
 	$(MAKE) -C ./libft clean
