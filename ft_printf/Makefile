@@ -4,11 +4,11 @@ MAKE = make
 
 CC = cc
 CFLAGS = -Wall -Wextra -Werror
-CPPFLAS = -I includes -I libft
+CPPFLAGS = -I includes -I libft
 
 RM = rm -f
 
-SRCS = printf.c put_out_1.c put_out_2.c
+SRCS = sources/printf.c sources/put_out_1.c sources/put_out_2.c
 
 OBJS = $(SRCS:.c=.o)
 
@@ -20,8 +20,8 @@ $(NAME) : $(OBJS)
 	cp libft/libft.a $@
 	ar rcs $@ $?
 
-%.o : %.c
-	$(CC) $(CFLAGS) $(CPPFLAS) -c $< -o $@
+sources/%.o : sources%.c
+	$(CC) $(CFLAGS) $(CPPFLAGS) -c $< -o $@
 
 clean :
 	$(MAKE) -C ./libft clean
