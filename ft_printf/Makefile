@@ -4,7 +4,7 @@ MAKE = make
 
 CC = cc
 CFLAGS = -Wall -Wextra -Werror
-CPPFLAGS = -I includes -I libft
+CPPFLAGS = -I includes -I ft_libft
 
 RM = rm -f
 
@@ -16,19 +16,19 @@ OBJS = $(SRCS:.c=.o)
 all : $(NAME)
 
 $(NAME) : $(OBJS)
-	$(MAKE) -C ./libft
-	cp libft/libft.a $@
+	$(MAKE) -C ./ft_libft
+	cp ft_libft/libft.a $@
 	ar rcs $@ $?
 
 sources/%.o : sources%.c
 	$(CC) $(CFLAGS) $(CPPFLAGS) -c $< -o $@
 
 clean :
-	$(MAKE) -C ./libft clean
+	$(MAKE) -C ./ft_libft clean
 	$(RM) $(OBJS)
 
 fclean : clean
-	$(MAKE) -C ./libft fclean
+	$(MAKE) -C ./ft_libft fclean
 	$(RM) $(NAME)
 
 re : fclean all

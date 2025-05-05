@@ -6,7 +6,7 @@
 /*   By: rysato <rysato@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/02 15:04:46 by rysato            #+#    #+#             */
-/*   Updated: 2025/05/05 16:38:47 by rysato           ###   ########.fr       */
+/*   Updated: 2025/05/05 17:30:20 by rysato           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@
 # include <stdlib.h>
 # include <unistd.h>
 
-# include "../libft/libft.h"
+# include "../ft_libft/libft.h"
 
 int	ft_printf(const char *format, ...);
 int	put_out_c(int c);

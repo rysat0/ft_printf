@@ -6,7 +6,7 @@
 /*   By: rysato <rysato@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/02 16:40:29 by rysato            #+#    #+#             */
-/*   Updated: 2025/05/05 16:40:46 by rysato           ###   ########.fr       */
+/*   Updated: 2025/05/05 17:06:33 by rysato           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 int	put_out_u(unsigned int num);
 int	put_out_smallx(unsigned int num);
 int	put_out_largex(unsigned int num);
-int	put_out_percent(void);
+int	put_out_per(void);
 
 int	put_out_u(unsigned int num)
 {
@@ -71,7 +71,7 @@ int	put_out_largex(unsigned int num)
 	return (written + 1);
 }
 
-int	put_out_percent(void)
+int	put_out_per(void)
 {
 	char	c;
 
